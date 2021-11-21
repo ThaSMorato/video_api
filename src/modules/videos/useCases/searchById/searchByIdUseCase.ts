@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { EventCreateCache } from "../../../../shared/Event/EventCreateCache";
 import { OMDBData } from "../../entities/OMDbData";
 import { IOMDbDataApiRepository } from "../../repositories/IOMDbDataApiRepository";
 
@@ -11,6 +12,10 @@ export class SearchByIdUseCase {
 
   async execute(id: string): Promise<OMDBData> {
     const data = await this.oMDbDataApiRepository.findById(id);
+
+    const eventCreateCache = EventCreateCache.getInstance();
+
+    eventCreateCache.emmitAll(data);
 
     return data;
   }
