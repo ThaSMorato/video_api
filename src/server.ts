@@ -1,12 +1,11 @@
-import "express-async-errors";
 import express from "express";
+import "express-async-errors";
+import "dotenv/config";
 import "reflect-metadata";
-import { errorHandler } from "./shared/middlewares/ErrorMiddleware";
-
-import { router } from "./routes";
-
-// import "./database";
 import "./shared/container";
+
+import { errorHandler } from "./shared/middlewares/ErrorMiddleware";
+import { router } from "./routes";
 import { EventCreateCache } from "./shared/Event/EventCreateCache";
 
 const PORT = 3333;
