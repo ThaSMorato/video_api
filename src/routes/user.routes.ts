@@ -7,3 +7,5 @@ const createUserController = new CreateUserController();
 
 userRouter.post("/user", createUserController.handle);
 userRouter.post("/login", createUserController.handle);
+
+export { userRouter };
